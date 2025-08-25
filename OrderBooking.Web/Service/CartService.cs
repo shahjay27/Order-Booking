@@ -43,6 +43,16 @@ namespace OrderBooking.Web.Service
             });
         }
 
+        public async Task<ResponseDto?> EmailCart(CartDto cartDto)
+        {
+            return await _baseService.SendAsync(new()
+            {
+                ApiType = StaticDetails.ApiTypes.POST,
+                Data = cartDto,
+                Url = StaticDetails.CartAPIBase + "/api/cartapi/EmailCartRequest"
+            });
+        }
+
         public async Task<ResponseDto?> GetCart(string userId)
         {
             return await _baseService.SendAsync(new()
@@ -58,7 +68,7 @@ namespace OrderBooking.Web.Service
             {
                 ApiType = StaticDetails.ApiTypes.POST,
                 Data = cartDto,
-                Url = StaticDetails.CouponAPIBase + "/api/cartapi/RemoveCoupon"
+                Url = StaticDetails.CartAPIBase + "/api/cartapi/RemoveCoupon"
             });
         }
     }

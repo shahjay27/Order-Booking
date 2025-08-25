@@ -10,5 +10,6 @@ namespace OrderBooking.Web.Service.IService
         public Task<ResponseDto?> GetCart(string userId);
         public Task<ResponseDto?> ApplyCoupon(CartDto cartDto);
         public Task<ResponseDto?> RemoveCoupon(CartDto cartDto);
+        public Task<ResponseDto?> EmailCart(CartDto cartDto);
     }
 }

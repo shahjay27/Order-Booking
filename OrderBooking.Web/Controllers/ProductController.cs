@@ -7,18 +7,18 @@ namespace OrderBooking.Web.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductService _ProductService;
+        private readonly IProductService _productService;
 
         public ProductController(IProductService ProductService)
         {
-            this._ProductService = ProductService;
+            this._productService = ProductService;
         }
 
         public async Task<IActionResult> ProductIndex()
         {
             List<ProductDto> Products = new();
 
-            var response = await this._ProductService.GetAllProductAsync();
+            var response = await this._productService.GetAllProductAsync();
 
             if (response != null && response.IsSuccess)
             {
@@ -42,7 +42,7 @@ namespace OrderBooking.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await this._ProductService.CreateProductAsync(Product);
+                var response = await this._productService.CreateProductAsync(Product);
 
                 if (response != null && response.IsSuccess)
                 {
@@ -61,7 +61,7 @@ namespace OrderBooking.Web.Controllers
         {
 			ProductDto? Product = new();
 
-			var response = await this._ProductService.GetProductByIdAsync(ProductId);
+			var response = await this._productService.GetProductByIdAsync(ProductId);
 
 			if (response != null && response.IsSuccess)
 			{
@@ -81,7 +81,7 @@ namespace OrderBooking.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await this._ProductService.UpdateProductAsync(Product);
+                var response = await this._productService.UpdateProductAsync(Product);
 
                 if (response != null && response.IsSuccess)
                 {
@@ -100,7 +100,7 @@ namespace OrderBooking.Web.Controllers
         {
             ProductDto? Product = new();
 
-            var response = await this._ProductService.GetProductByIdAsync(ProductId);
+            var response = await this._productService.GetProductByIdAsync(ProductId);
 
             if (response != null && response.IsSuccess)
             {
@@ -118,7 +118,7 @@ namespace OrderBooking.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ProductDelete(ProductDto Product)
         {
-            var response = await this._ProductService.DeleteProductAsync(Product.ProductId);
+            var response = await this._productService.DeleteProductAsync(Product.ProductId);
 
             if (response != null && response.IsSuccess)
             {
